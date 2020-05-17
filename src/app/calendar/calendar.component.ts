@@ -1,15 +1,19 @@
-﻿import { Component } from '@angular/core';
-import { first } from 'rxjs/operators';
+﻿import {Component} from '@angular/core';
+import {first} from 'rxjs/operators';
 
-import { User } from '@app/_models';
-import { UserService, AuthenticationService } from '@app/_services';
+import {User} from '@app/_models';
+import {UserService, AuthenticationService} from '@app/_services';
 
-@Component({ templateUrl: 'calendar.component.html' })
+@Component({
+    templateUrl: 'calendar.component.html',
+    styleUrls: ['calendar.component.css']
+})
 export class CalendarComponent {
     loading = false;
     users: User[];
 
-    constructor(private userService: UserService) { }
+    constructor(private userService: UserService) {
+    }
 
     ngOnInit() {
         this.loading = true;

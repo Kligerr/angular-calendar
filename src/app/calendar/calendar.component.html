@@ -1,10 +1,18 @@
 ﻿<div class="card mt-4">
     <h4 class="card-header">You're in CALENDAR!</h4>
     <div class="card-body">
-        <h6>Users from secure api end point</h6>
-        <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
-        <ul *ngIf="users">
-            <li *ngFor="let user of users">{{user.firstName}} {{user.lastName}}</li>
-        </ul>
+        <div class="container-fluid">
+
+            <hr>
+
+            <p>
+                This is a demo example forked from the <strong>ng-bootstrap</strong> project: Angular powered Bootstrap.
+                Visit <a href="https://ng-bootstrap.github.io/" target="_blank">https://ng-bootstrap.github.io</a> for more
+                widgets and demos.
+            </p>
+
+            <hr>
+            <app-hebrew-date-picker></app-hebrew-date-picker>
+        </div>
     </div>
 </div>

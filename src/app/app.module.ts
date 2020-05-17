@@ -8,12 +8,14 @@ import { fakeBackendProvider } from './_helpers';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './home';
 import { CalendarComponent } from './calendar';
 import { LoginComponent } from './login';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HebrewDatePickerComponent } from './hebrew-date-picker/hebrew-date-picker.component'
 
 @NgModule({
     imports: [
@@ -22,12 +24,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         HttpClientModule,
         AppRoutingModule,
         NgbModule,
+        FormsModule,
     ],
     declarations: [
         AppComponent,
         HomeComponent,
         CalendarComponent,
         LoginComponent,
+        HebrewDatePickerComponent,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -36,6 +40,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         // provider used to create fake backend
         fakeBackendProvider
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent, HebrewDatePickerComponent]
 })
 export class AppModule {}
