@@ -1,0 +1,34 @@
+<p>Example of the range selection</p>
+
+<ngb-datepicker
+        class="hebrew rtl"
+        #dp (dateSelect)="onDateSelection($event)"
+        [displayMonths]="2"
+        [dayTemplate]="t"
+        [firstDayOfWeek]="7"
+        outsideDays="hidden"
+>
+</ngb-datepicker>
+
+<ng-template #t let-date let-focused="focused">
+  <span class="custom-day"
+        [class.focused]="focused"
+        [class.range]="isRange(date)"
+        [class.faded]="isHovered(date) || isInside(date)"
+        (mouseenter)="hoveredDate = date"
+        (mouseleave)="hoveredDate = null">
+    {{ date.day }}
+  </span>
+</ng-template>
+
+<ng-template #dt let-date let-data="data" let-selected="selected" let-currentMonth="currentMonth">
+  <div class="hebrew-day" [class.outside]="date.month !== currentMonth" [class.selected]="selected">
+    <div class="gregorian-num">{{ data.gregorian.day + '/' + (data.gregorian.month) }}</div>
+    <div class="hebrew-num">{{ i18n.getDayNumerals(date) }}</div>
+  </div>
+</ng-template>
+
+<hr>
+
+<pre>From: {{ fromDate | json }} </pre>
+<pre>To: {{ toDate | json }} </pre>

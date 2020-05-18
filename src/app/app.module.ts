@@ -15,8 +15,8 @@ import { HomeComponent } from './home';
 import { CalendarComponent } from './calendar';
 import { LoginComponent } from './login';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HebrewDatePickerComponent } from './hebrew-date-picker/hebrew-date-picker.component'
-
+import { HebrewDatePickerComponent } from './hebrew-date-picker/hebrew-date-picker.component';
+import { HebrewDatePickerRangeComponent } from './hebrew-date-picker-range/hebrew-date-picker-range.component';
 @NgModule({
     imports: [
         BrowserModule,
@@ -32,6 +32,7 @@ import { HebrewDatePickerComponent } from './hebrew-date-picker/hebrew-date-pick
         CalendarComponent,
         LoginComponent,
         HebrewDatePickerComponent,
+        HebrewDatePickerRangeComponent,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
