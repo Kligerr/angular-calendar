@@ -1,5 +1,12 @@
 import {Component} from '@angular/core';
-import {NgbCalendar, NgbCalendarHebrew, NgbDate, NgbDatepickerI18n, NgbDatepickerI18nHebrew} from '@ng-bootstrap/ng-bootstrap';
+import {
+    NgbCalendar,
+    NgbCalendarHebrew,
+    NgbDate,
+    NgbDatepickerI18n,
+    NgbDatepickerI18nHebrew,
+    NgbDateStruct
+} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-hebrew-date-picker-range',
@@ -13,13 +20,29 @@ import {NgbCalendar, NgbCalendarHebrew, NgbDate, NgbDatepickerI18n, NgbDatepicke
 export class HebrewDatePickerRangeComponent {
 
     hoveredDate: NgbDate | null = null;
+    model: NgbDateStruct;
 
     fromDate: NgbDate;
     toDate: NgbDate | null = null;
 
     constructor(private calendar: NgbCalendar, public i18n: NgbDatepickerI18n) {
+        this.dayTemplateData = this.dayTemplateData.bind(this);
         this.fromDate = calendar.getToday();
         this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+    }
+
+    dayTemplateData(date: NgbDate) {
+        return {
+            gregorian: (this.calendar as NgbCalendarHebrew).toGregorian(date)
+        };
+    }
+
+    selectToday() {
+        this.model = this.calendar.getToday();
+    }
+
+    getPrevMonth(){
+        return this.calendar.getPrev(this.calendar.getToday(), 'm', 1);
     }
 
     onDateSelection(date: NgbDate) {

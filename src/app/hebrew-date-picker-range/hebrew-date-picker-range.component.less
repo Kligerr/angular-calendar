@@ -1,17 +1,26 @@
-.custom-day {
-  text-align: center;
-  padding: 0.185rem 0.25rem;
+.hebrew-day {
+  text-align: right;
+  padding: 0.25rem 0.65rem 0.25rem 0.25rem;
+  border-radius: 0.25rem;
   display: inline-block;
-  height: 2rem;
-  width: 2rem;
+  height: 2.75rem;
+  width: 2.75rem;
 }
-.custom-day.focused {
+.hebrew-day.focused {
   background-color: #e6e6e6;
 }
-.custom-day.range, .custom-day:hover {
+.hebrew-day.range, .hebrew-day:hover {
   background-color: rgb(212, 2, 5);
   color: white;
 }
-.custom-day.faded {
+.hebrew-day.faded {
   background-color: rgba(212, 2, 5, 0.5);
+}
+
+.outside {
+  color: lightgray;
+}
+.gregorian-num {
+  font-size: 0.5rem;
+  direction: ltr;
 }

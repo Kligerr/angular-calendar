@@ -3,32 +3,40 @@
 <ngb-datepicker
         class="hebrew rtl"
         #dp (dateSelect)="onDateSelection($event)"
-        [displayMonths]="2"
+        [displayMonths]="3"
         [dayTemplate]="t"
+        [startDate]=getPrevMonth()
         [firstDayOfWeek]="7"
+        [dayTemplate]="t"
+        [dayTemplateData]="dayTemplateData"
         outsideDays="hidden"
 >
 </ngb-datepicker>
 
-<ng-template #t let-date let-focused="focused">
-  <span class="custom-day"
+<ng-template #t let-date let-data="data" let-focused="focused">
+  <span class="hebrew-day"
         [class.focused]="focused"
         [class.range]="isRange(date)"
         [class.faded]="isHovered(date) || isInside(date)"
         (mouseenter)="hoveredDate = date"
         (mouseleave)="hoveredDate = null">
-    {{ date.day }}
+      <div class="hebrew-num">{{ i18n.getDayNumerals(date) }}</div>
+      <div class="gregorian-num">{{ data.gregorian.day + '/' + (data.gregorian.month) }}</div>
+
   </span>
 </ng-template>
 
 <ng-template #dt let-date let-data="data" let-selected="selected" let-currentMonth="currentMonth">
-  <div class="hebrew-day" [class.outside]="date.month !== currentMonth" [class.selected]="selected">
-    <div class="gregorian-num">{{ data.gregorian.day + '/' + (data.gregorian.month) }}</div>
-    <div class="hebrew-num">{{ i18n.getDayNumerals(date) }}</div>
-  </div>
+    <div class="hebrew-day"
+         [class.outside]="date.month !== currentMonth"
+         [class.selected]="selected">
+        <div class="hebrew-num">{{ i18n.getDayNumerals(date) }}</div>
+        <div class="gregorian-num">{{ data.gregorian.day + '/' + (data.gregorian.month) }}</div>
+    </div>
 </ng-template>
 
 <hr>
 
 <pre>From: {{ fromDate | json }} </pre>
 <pre>To: {{ toDate | json }} </pre>
+
