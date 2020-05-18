@@ -41,6 +41,6 @@ import { HebrewDatePickerRangeComponent } from './hebrew-date-picker-range/hebre
         // provider used to create fake backend
         fakeBackendProvider
     ],
-    bootstrap: [AppComponent, HebrewDatePickerComponent]
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

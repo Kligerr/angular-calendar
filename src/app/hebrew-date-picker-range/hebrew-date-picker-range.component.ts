@@ -71,6 +71,6 @@ export class HebrewDatePickerRangeComponent {
     }
 
     isMikvahDay(date: NgbDate) {
-        return date.equals(this.calendar.getNext(this.toDate, 'd', 7));
+        return this.toDate && date.equals(this.calendar.getNext(this.toDate, 'd', 7));
     }
 }

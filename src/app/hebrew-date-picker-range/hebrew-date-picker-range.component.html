@@ -17,8 +17,8 @@
   <span class="hebrew-day"
         [class.focused]="focused"
         [class.range]="isRange(date)"
-        [class.mikvah-day]="isMikvahDay(date)"
         [class.faded]="isHovered(date) || isInside(date)"
+        [class.mikvah-day]="isMikvahDay(date)"
         (mouseenter)="hoveredDate = date"
         (mouseleave)="hoveredDate = null">
       <div class="hebrew-num">{{ i18n.getDayNumerals(date) }}</div>
