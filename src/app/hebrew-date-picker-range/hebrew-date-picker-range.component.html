@@ -17,6 +17,7 @@
   <span class="hebrew-day"
         [class.focused]="focused"
         [class.range]="isRange(date)"
+        [class.mikvah-day]="isMikvahDay(date)"
         [class.faded]="isHovered(date) || isInside(date)"
         (mouseenter)="hoveredDate = date"
         (mouseleave)="hoveredDate = null">
@@ -39,4 +40,6 @@
 
 <pre>From: {{ fromDate | json }} </pre>
 <pre>To: {{ toDate | json }} </pre>
+<pre>mikvahDay: {{ this.mikvahDay | json }} </pre>
+
 
