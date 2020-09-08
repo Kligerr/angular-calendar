@@ -25,6 +25,7 @@ export class HebrewDatePickerRangeComponent {
     fromDate: NgbDate;
     toDate: NgbDate | null = null;
     mikvahDay: NgbDate;
+    vesetHachodeshDay: NgbDate;
 
     constructor(private calendar: NgbCalendar, public i18n: NgbDatepickerI18n) {
         this.dayTemplateData = this.dayTemplateData.bind(this);
@@ -52,6 +53,7 @@ export class HebrewDatePickerRangeComponent {
         } else if (this.fromDate && !this.toDate && date.after(this.fromDate)) {
             this.toDate = date;
             this.mikvahDay = this.calendar.getNext(this.toDate, 'd', 7);
+            this.vesetHachodeshDay = this.calcVesetHachodeshDay(this.fromDate);
         } else {
             this.toDate = null;
             this.fromDate = date;
@@ -71,6 +73,15 @@ export class HebrewDatePickerRangeComponent {
     }
 
     isMikvahDay(date: NgbDate) {
-        return this.toDate && date.equals(this.calendar.getNext(this.toDate, 'd', 7));
+        return this.toDate && date.equals(this.mikvahDay);
+    }
+
+    private calcVesetHachodeshDay(fromDate: NgbDate) {
+        const VesetHachodeshMonth = this.calendar.getNext(this.fromDate, 'm', 1);
+        return new NgbDate(VesetHachodeshMonth.year, VesetHachodeshMonth.month, fromDate.day);
+    }
+
+    isVesetHachodeshDay(date: NgbDate) {
+        return this.toDate && date.equals(this.vesetHachodeshDay);
     }
 }
