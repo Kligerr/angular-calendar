@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { HebrewDatePickerRangeComponent } from './hebrew-date-picker-range.component';
 
@@ -6,7 +6,7 @@ describe('HebrewDatePickerRangeComponent', () => {
   let component: HebrewDatePickerRangeComponent;
   let fixture: ComponentFixture<HebrewDatePickerRangeComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ HebrewDatePickerRangeComponent ]
     })
