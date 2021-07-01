@@ -6,6 +6,7 @@ import {
   NgbDatepickerI18nHebrew,
   NgbDateStruct
 } from '@ng-bootstrap/ng-bootstrap';
+import { NgxIndexedDBService } from 'ngx-indexed-db';
 
 @Component({
   selector: 'app-hebrew-date-picker',
@@ -20,7 +21,8 @@ export class HebrewDatePickerComponent {
 
   model: NgbDateStruct;
 
-  constructor(private calendar: NgbCalendar, public i18n: NgbDatepickerI18n) {
+  constructor(private calendar: NgbCalendar, public i18n: NgbDatepickerI18n,
+    private db: NgxIndexedDBService) {
     this.dayTemplateData = this.dayTemplateData.bind(this);
   }
 
@@ -34,4 +36,10 @@ export class HebrewDatePickerComponent {
     this.model = this.calendar.getToday();
   }
 
+  public addMachzor() {
+    this.db.add("machzorim", {
+      machzorStart: new Date(2021, 6, 16),
+      machzorEnd: new Date()
+    }).subscribe(key => console.log(`key: ${key}`));
+  }
 }

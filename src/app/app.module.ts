@@ -19,6 +19,13 @@ import { HebrewDatePickerComponent } from './hebrew-date-picker/hebrew-date-pick
 import { HebrewDatePickerRangeComponent } from './hebrew-date-picker-range/hebrew-date-picker-range.component';
 import { PersistenceService } from './_services/persistence.service';
 import { DBConfig } from 'ngx-indexed-db';
+import { NgxIndexedDBModule } from 'ngx-indexed-db';
+
+export function migrationFactory() {
+    return {
+        
+    }
+}
 
 // Database configuration
 const dbConfig: DBConfig = {
@@ -31,7 +38,8 @@ const dbConfig: DBConfig = {
             { name: 'machzorStart', keypath: 'machzorStart', options: { unique: false } },
             { name: 'machzorEnd', keypath: 'machzorEnd', options: { unique: false } }
         ]
-    }]
+    }],
+    migrationFactory
 };
 @NgModule({
     imports: [
@@ -41,6 +49,7 @@ const dbConfig: DBConfig = {
         AppRoutingModule,
         NgbModule,
         FormsModule,
+        NgxIndexedDBModule.forRoot(dbConfig)
     ],
     declarations: [
         AppComponent,
