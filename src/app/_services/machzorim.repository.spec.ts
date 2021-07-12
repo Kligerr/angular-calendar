@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PersistenceService } from './persistence.service';
+import { MachzorimRepository } from './machzorim.repository';
 
 describe('PersistenceService', () => {
-  let service: PersistenceService;
+  let service: MachzorimRepository;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PersistenceService);
+    service = TestBed.inject(MachzorimRepository);
   });
 
   it('should be created', () => {

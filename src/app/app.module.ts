@@ -17,7 +17,7 @@ import { LoginComponent } from './login';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HebrewDatePickerComponent } from './hebrew-date-picker/hebrew-date-picker.component';
 import { HebrewDatePickerRangeComponent } from './hebrew-date-picker-range/hebrew-date-picker-range.component';
-import { PersistenceService } from './_services/persistence.service';
+import { MachzorimRepository } from './_services/machzorim.repository';
 import { DBConfig } from 'ngx-indexed-db';
 import { NgxIndexedDBModule } from 'ngx-indexed-db';
 
@@ -66,7 +66,7 @@ const dbConfig: DBConfig = {
         // provider used to create fake backend
         fakeBackendProvider,
 
-        PersistenceService
+        MachzorimRepository
     ],
     bootstrap: [AppComponent]
 })

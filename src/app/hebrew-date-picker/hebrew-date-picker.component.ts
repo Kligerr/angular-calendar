@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Machzor } from '@app/_models';
+import { MachzorimRepository } from '@app/_services/machzorim.repository';
 import {
   NgbCalendar,
   NgbCalendarHebrew, NgbDate,
@@ -7,6 +9,7 @@ import {
   NgbDateStruct
 } from '@ng-bootstrap/ng-bootstrap';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-hebrew-date-picker',
@@ -21,8 +24,9 @@ export class HebrewDatePickerComponent {
 
   model: NgbDateStruct;
 
-  constructor(private calendar: NgbCalendar, public i18n: NgbDatepickerI18n,
-    private db: NgxIndexedDBService) {
+  constructor(private calendar: NgbCalendar, 
+              public i18n: NgbDatepickerI18n,
+              private machzorim: MachzorimRepository) {
     this.dayTemplateData = this.dayTemplateData.bind(this);
   }
 
@@ -37,9 +41,9 @@ export class HebrewDatePickerComponent {
   }
 
   public addMachzor() {
-    this.db.add("machzorim", {
-      machzorStart: new Date(2021, 6, 16),
-      machzorEnd: new Date()
-    }).subscribe(key => console.log(`key: ${key}`));
+    this.machzorim.addMachzor({ 
+      start: new Date(2021, 6, 8),
+      end: new Date()
+    }).subscribe(result => console.log("Successfully added"));
   }
 }

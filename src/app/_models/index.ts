@@ -1,2 +1,2 @@
 ﻿export * from './user';
-export * from './period';
+export * from './machzor';
