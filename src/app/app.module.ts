@@ -20,10 +20,19 @@ import { HebrewDatePickerRangeComponent } from './hebrew-date-picker-range/hebre
 import { MachzorimRepository } from './_services/machzorim.repository';
 import { DBConfig } from 'ngx-indexed-db';
 import { NgxIndexedDBModule } from 'ngx-indexed-db';
+import * as objectStores from './_helpers/objectStores';
 
 export function migrationFactory() {
     return {
-        
+        2: (db: IDBDatabase, transaction: IDBTransaction) => {
+            const store: IDBObjectStore = transaction.objectStore(objectStores.MACHZORIM);
+            store.createIndex('hebStartDay', 'hebStartDay', { unique: false });
+            store.createIndex('hebStartMonth', 'hebStartMonth', { unique: false });
+            store.createIndex('hebStartYear', 'hebStartYear', { unique: false });
+            store.createIndex('hebEndDay', 'hebEndDay', { unique: false });
+            store.createIndex('hebEndMonth', 'hebEndMonth', { unique: false });
+            store.createIndex('hebEndYear', 'hebEndYear', { unique: false });
+        }
     }
 }
 
@@ -36,13 +45,7 @@ const dbConfig: DBConfig = {
         storeConfig: { keyPath: 'id', autoIncrement: true },
         storeSchema: [
             { name: 'machzorStart', keypath: 'machzorStart', options: { unique: false } },
-            { name: 'machzorEnd', keypath: 'machzorEnd', options: { unique: false } },
-            { name: 'hebStartDay', keypath: 'hebStartDay', options: { unique: false } },
-            { name: 'hebStartMonth', keypath: 'hebStartMonth', options: { unique: false } },
-            { name: 'hebStartYear', keypath: 'hebStartYear', options: { unique: false } },
-            { name: 'hebEndDay', keypath: 'hebEndDay', options: { unique: false } },
-            { name: 'hebEndMonth', keypath: 'hebEndMonth', options: { unique: false } },
-            { name: 'hebEndYear', keypath: 'hebEndYear', options: { unique: false } }
+            { name: 'machzorEnd', keypath: 'machzorEnd', options: { unique: false } }
         ]
     }],
     migrationFactory
