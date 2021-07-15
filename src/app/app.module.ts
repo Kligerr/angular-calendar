@@ -30,13 +30,19 @@ export function migrationFactory() {
 // Database configuration
 const dbConfig: DBConfig = {
     name: 'Calendar',
-    version: 1,
+    version: 2,
     objectStoresMeta: [{
         store: 'machzorim',
         storeConfig: { keyPath: 'id', autoIncrement: true },
         storeSchema: [
             { name: 'machzorStart', keypath: 'machzorStart', options: { unique: false } },
-            { name: 'machzorEnd', keypath: 'machzorEnd', options: { unique: false } }
+            { name: 'machzorEnd', keypath: 'machzorEnd', options: { unique: false } },
+            { name: 'hebStartDay', keypath: 'hebStartDay', options: { unique: false } },
+            { name: 'hebStartMonth', keypath: 'hebStartMonth', options: { unique: false } },
+            { name: 'hebStartYear', keypath: 'hebStartYear', options: { unique: false } },
+            { name: 'hebEndDay', keypath: 'hebEndDay', options: { unique: false } },
+            { name: 'hebEndMonth', keypath: 'hebEndMonth', options: { unique: false } },
+            { name: 'hebEndYear', keypath: 'hebEndYear', options: { unique: false } }
         ]
     }],
     migrationFactory
